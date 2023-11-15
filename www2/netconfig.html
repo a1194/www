@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>网络配置</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <style type="text/css">
+        .progress {
+            width: 600px;
+            height: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 10px 0px;
+            overflow: hidden;
+        }
+        /* 初始状态设置进度条宽度为0px */
+        .progress > div {
+            width: 0px;
+            height: 100%;
+            background-color: yellowgreen;
+            transition: all .3s ease;
+        }
+    </style>
+
+    <script src="js/base64.js"></script>
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/setting.js"></script>
+    <script src="js/pages/netconfig.js"></script>
+    <script src="js/myui.form.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+<body>
+<form id="form-setting" class="layui-form layui-form-pane" action="" style="margin: 10px 0 10px 0">
+    <div class="layui-form-item">
+        <label class="layui-form-label" data-i18n-text="netconfig.is_dhcp"></label>
+        <div class="layui-input-block">
+
+            <input type="radio" name="is_dhcp" value="0" checked="" lay-filter="is_dhcp" class="no"/>
+            <input type="radio" name="is_dhcp" value="1" lay-filter="is_dhcp" class="yes" />
+
+            <!--
+            <input type="radio" name="is_dhcp" value="0" checked="" lay-filter="is_dhcp" data-i18n-text="common.no"/>
+            <input type="radio" name="is_dhcp" value="1" lay-filter="is_dhcp" data-i18n-text="common.yes"/>
+            -->
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" data-i18n-text="netconfig.ip"></label>
+        <div class="layui-input-inline">
+            <input type="text" name="ip" id="ip" lay-verify="required" autocomplete="off"
+                   class="layui-input" data-i18n-placeholder="common.input_tip">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" data-i18n-text="netconfig.mac"></label>
+        <div class="layui-input-inline">
+            <input type="text" name="mac" class="layui-input" value="" readonly  style="background-color: #fafafa;">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" data-i18n-text="netconfig.gw"></label>
+        <div class="layui-input-inline">
+            <input type="text" name="gw" id="gw" lay-verify="required" autocomplete="off"
+                   class="layui-input" data-i18n-placeholder="common.input_tip">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" data-i18n-text="netconfig.mask"></label>
+        <div class="layui-input-inline">
+            <input type="text" name="mask" id="mask" lay-verify="required" autocomplete="off"
+                   class="layui-input" data-i18n-placeholder="common.input_tip">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" data-i18n-text="netconfig.dns"></label>
+        <div class="layui-input-inline">
+            <input type="text" name="dns" id="dns" lay-verify="required" autocomplete="off"
+                   class="layui-input" data-i18n-placeholder="common.input_tip">
+        </div>
+    </div>
+
+    <div class="layui-input-inline" style="width: auto;">
+        <button class="layui-btn" onclick="editNetwork()" type="button" data-i18n-text="common.save"></button>
+    </div>
+
+</form>
+
+
+</body>
+</html>

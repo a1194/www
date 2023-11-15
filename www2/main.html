@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>main</title>
+    <link rel="icon" href="images/mark.png"/>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/myui.message.css">
+
+    <style type="text/css">
+
+        body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main {
+            height: 100%;
+            padding: 50px 0 0 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .main-title {
+            height: 50px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .main-content {
+            height: 100%;
+        }
+
+        .layui-tab-item, .layui-tab-content {
+            height: 100%;
+        }
+        /* .layui-side-scroll {
+            background-color: #393d49 !important;
+        } */
+        .ddClass {
+            border-left: 2px solid transparent;
+            box-sizing: border-box;
+        }
+        .ddClass:hover {
+            border-color: #009688;
+        }
+        .ddClass.layui-this {
+            background-color: #009688 !important;
+        }
+        .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this>a {
+            background-color: transparent !important;
+        }
+        .layui-this.nav-title:after {
+            width: 0 !important;
+        }
+        .layui-nav .layui-this a {
+            color: rgba(255,255,255,.7) !important;
+        }
+        .layui-nav .layui-this a:hover {
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo layui-hide-xs layui-bg-black"><img src="images/logo_ace.png" width="160px" height="22px"/></div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <!-- 移动端显示 -->
+            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+                <i class="layui-icon layui-icon-spread-left"></i>
+            </li>
+
+                <li class="layui-nav-item layui-hide-xs nav-title" ><a href="javascript:void(0);"  name="home" style="font-size: 18px;" >ALinkSmartHome</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+                <a href="javascript:;" id="account">
+                    tester
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" onclick="logout()" data-i18n-text="common.logout"></a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-more-vertical"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree ul" id="nav-container">
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body" style="padding: 15px">
+        <!-- 内容主体区域 -->
+
+        <!--
+        <div style="padding: 15px;height: 100%;">
+            <div class="layui-tab layui-tab-brief" lay-filter="tab-filter" lay-allowclose="false" style="height: 100%;">
+                <ul class="layui-tab-title">
+                    <li id="tab-title" class="layui-this" lay-id="home">首页</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 100%;">
+                    <div class="layui-tab-item layui-show">
+                        <iframe id="tab-content" name="home" src="home.html"
+                                frameborder="no" border="no" height="100%" width="100%"
+                                scrolling="auto"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <!--
+        <div class="main" style="padding-bottom: 30px">
+            <div class="main-title">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend id="tab-title">
+                        首页
+                    </legend>
+                </fieldset>
+            </div>
+            <div class="main-content">
+                <iframe id="tab-content" name="main-iframe" src="home.html"
+                        frameborder="no" border="no" height="100%" width="100%" scrolling="auto"></iframe>
+            </div>
+        </div>
+        -->
+
+        <div class="layui-tab layui-tab-brief" lay-filter="tab-filter"  style="margin: 0">
+            <ul class="layui-tab-title">
+                <li id="tab-title" data-i18n-text="main.home" class="layui-this" style="background-color: #fff !important;"></li>
+                <!-- <li id="tab-title" class="layui-this" data-i18n-text="main.home"></li> -->
+            </ul>
+            <div class="layui-tab-content">
+                <iframe id="tab-content" name="main-iframe" src="home.html" 
+                        frameborder="no" border="no" height="98%" width="100%" scrolling="auto"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+    </div>
+</div>
+
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/jquery/jquery.form.js"></script>
+<script src="js/jquery/jquery.tips.js"></script>
+<script src="js/jquery.i18n.properties.js"></script>
+<script src="layui/layui.js"></script>
+<script src="js/myui.message.js"></script>
+<script src="js/mqttws31.js"></script>
+<script src="js/common.tools.js"></script>
+<script src="js/config.js"></script>
+<script src="js/check.js"></script>
+<script src="js/model/global.js"></script>
+<script src="js/pages/main.js"></script>
+
+<script type="text/javascript">
+    //JS
+</script>
+</body>
+</html>

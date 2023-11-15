@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加设备</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/sort.js"></script>
+    <script src="js/model/device.js"></script>
+    <script src="js/pages/device_add_test.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+<body>
+<blockquote class="layui-elem-quote layui-quote-nm">
+    发现：<span class="layui-badge layui-bg-blue" id="discovery-total">0</span>
+</blockquote>
+<table class="layui-hide" id="device-table" lay-filter="device-table"></table>
+
+<script type="text/html" id="device-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="back">返回</button>
+        <button class="layui-btn layui-btn-sm" lay-event="goMultSmartConfig">批量配网</button>
+    </div>
+
+    <!--
+<div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="smartconfigs">配网</button>
+</div>
+-->
+</script>
+
+<script type="text/html" id="device-shortcut">
+    <a class="layui-btn layui-btn-xs" lay-event="prov">配网</a>
+</script>
+</body>
+</html>

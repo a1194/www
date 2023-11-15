@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>添加应用</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <style type="text/css">
+
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/pages/app_add.js"></script>
+    <script src="js/base64.js"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form-user-add" class="layui-form layui-form-pane" action="">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">应用名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="app_name" id="app_name" lay-verify="required"
+                        data-i18n-placeholder="common.input_tip" autocomplete="off" class="layui-input" value="Knx转485">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">上传文件</label>
+                <div class="layui-input-inline" style="width: 300px;">
+                    <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <button class="layui-btn" type="button" data-i18n-text="common.confirm" id="test9">确定</button>
+                <button class="layui-btn layui-btn-primary layui-border-green" onclick="closeWin()" type="button"
+                    data-i18n-text="common.cancel">取消</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

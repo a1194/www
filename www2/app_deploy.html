@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>应用部署</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <style type="text/css">
+        .progress {
+            width: 600px;
+            height: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 10px 0px;
+            overflow: hidden;
+        }
+        /* 初始状态设置进度条宽度为0px */
+        .progress > div {
+            width: 0px;
+            height: 100%;
+            background-color: yellowgreen;
+            transition: all .3s ease;
+        }
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/pages/app_deploy.js"></script>
+    <script src="js/myui.form.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+    <style>
+        .upload{
+            position: relative;
+        }
+        #dbFile{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            opacity: 0;
+        }
+        #btn, #dbFile{
+            padding: 5px;
+        }
+        .ul {
+            display: flex;
+            align-items: center;
+            width: auto !important;
+            height: 38px;
+        }
+
+    </style>
+</head>
+<body>
+<form id="form-app-deploy" class="layui-form layui-form-pane" action="" style="margin: 10px 0 10px 0">
+    <div class="layui-form-item">
+        <label class="layui-form-label" data-i18n-text="appdeploy.version"></label>
+        <div class="layui-input-inline">
+            <input type="text" name="version" class="layui-input" value="1.0.0" readonly  style="background-color: #fafafa;">
+        </div>
+        <div class="layui-input-inline ul">
+            <!-- <label for="dbFile" class="upload">
+                <input type="button" id="btn" data-i18n-value="common.choose_file" title=""><span id="tx"></span>
+                <input type="file" id="dbFile" title="">
+            </label> -->
+            <button type="button" class="layui-btn layui-btn-primary layui-border-green" id="ID-upload-demo-choose" data-i18n-text="common.choose_file">选择文件</button>
+            <span class="chooseName" style="margin: 0 10px;display: none;"></span>
+        </div>
+        <div class="layui-input-inline" style="width: auto;">
+            <button class="layui-btn" onclick="startClick()" type="button" data-i18n-text="appdeploy.upgrade"></button>
+        </div>
+        <div class="layui-input-inline" style="width: 50%;">
+            <div class="progress">
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+</body>
+</html>

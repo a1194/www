@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/myui.message.css">
+    <link rel="stylesheet" href="css/viewer.min.css">
+    <link rel="stylesheet" href="./css/iconfont.css">
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="js/viewer.min.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/file2.js"></script>
+    <script src="js/pages/file2.js"></script>
+    <script src="js/jquery.contextmenu.r2.js"></script>
+    <style>
+        html, body, .file-content {
+            height: 100%;
+        }
+        .file-content {
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            width: 120px;
+            transition: .2s all ease;
+            user-select: none;
+        }
+        .box:hover {
+            background-color: rgba(22, 186, 170, .3);
+        }
+        .ablum {
+            width: 120px;
+            height: 120px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position-x: center;
+            background-position-y: 80%;
+        }
+        .ablum.f {
+            background-image: url("./images/fold_ablum.png");
+            background-position-x: center;
+            background-position-y: bottom;
+        }
+        .ablum img {
+            width: 100%;
+            height: 100%;
+        }
+        #name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 12px;
+        }
+
+        #navigation {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        /* #back {
+            position: relative;
+            top: -1px;
+            cursor: not-allowed;
+            font-weight: bold;
+            margin-right: 20px;
+            color: #999;
+            padding: 0 12px;
+        }
+        #back:hover {
+            color: #16baaa;
+        } */
+
+        #breadcrumb {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        #breadcrumb .tab {
+            cursor: pointer;
+            margin-right: 5px;
+            color: #999;
+            font-size: 20px;
+        }
+        #breadcrumb .tab:hover {
+            color: #16baaa;
+        }
+        #breadcrumb .tab span {
+            user-select: none;
+        }
+
+
+        #jqContextMenu ul{
+            padding: 5px !important;
+        }
+        #jqContextMenu ul li {
+            padding: 5px 2px !important;
+            cursor: pointer !important;
+            color: #333 !important;
+            font-size: 14px !important;
+        }
+        #jqContextMenu ul li:hover {
+            background-color: #ececec !important;
+            border-color: transparent !important;
+        }
+
+
+        .control {
+            margin-right: 20px;
+        }
+        /* .add {
+            width: 24px;
+            height: 24px;
+        }
+        .add img {
+            width: 100%;
+            height: 100%;
+        }
+        .add {
+            color: #999;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .add:hover {
+            color: #16baaa;
+        } */
+        
+        .focus {
+            background-color: rgba(22, 186, 170, .3);
+        }
+        #showTree {
+            display: none;
+            padding: 0 8px;
+        }
+        #showTree .treeItem {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            user-select: none;
+        }
+        .treeItem .treeImage {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+        }
+        .treeItem .treeName {
+            cursor: default;
+        }
+        .treeItem .treeImage img {
+            width: 100%;
+            height: 100%;
+        }
+        .layui-hide  {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="file-content" id="file-content">
+        <div id="navigation">
+            <!-- <div id="back" onclick="handleBack()"> < </div> -->
+            <!-- <div class="control">
+                <span class="iconfont icon-tianjia add" onclick="handleAdd()"></span>
+            </div> -->
+            <button class="layui-btn layui-btn-sm layui-btn-disabled" onclick="handleBack()" type="button" id="back"> < </button>
+            <button class="layui-btn layui-btn-sm" onclick="handleAdd()" type="button" id="add" style="margin-left: 1px;" data-i18n-text="file.upload">上传文件</button>
+        </div>
+        <div id="breadcrumb">
+            <!-- <div class="tab">
+                <span>/</span>
+                <span>files</span>
+            </div> -->
+        </div>
+        <div class="content" id="content">
+        </div>
+        
+    </div>
+    <div id="showTree">
+            
+    </div>
+    <!-- 在空白部分右键的菜单 -->
+    <div class="contextMenu" id="myMenu1">
+        <ul>
+            <li id="newfolder" data-i18n-text="file.new_folder">新建文件夹</li>
+            <!-- <li id="paste">黏贴</li> -->
+            <li id="flush" data-i18n-text="file.flush">刷新</li>
+            <!-- <li id="sort">排序</li> -->
+            <li id="selectAll" data-i18n-text="file.selectAll">全选</li>
+        </ul>
+    </div>
+    <!-- 在文件夹上右键菜单 -->
+    <div class="contextMenu" id="myMenu2">
+        <ul>
+            <!-- <li id="open">打开</li> -->
+            <!-- <li id="copy">复制</li>
+            <li id="cut">剪切</li>
+            <li id="paste">黏贴</li> -->
+            <li id="rename" data-i18n-text="file.rename">重命名</li>
+            <li id="delete" data-i18n-text="common.delete">删除</li>
+            <li id="move" data-i18n-text="file.move">移动</li>
+            <!-- <li id="download">打包下载</li> -->
+        </ul>
+    </div>
+    <!-- 在文件上面右键菜单 -->
+    <div class="contextMenu" id="myMenu3">
+        <ul>
+            <!-- <li id="download">下载</li> -->
+            <!-- <li id="copy">复制</li>
+            <li id="cut">剪切</li> -->
+            <li id="rename" data-i18n-text="file.rename">重命名</li>
+            <li id="delete" data-i18n-text="common.delete">删除</li>
+            <li id="move" data-i18n-text="file.move">移动</li>
+        </ul>
+    </div>
+</body>
+</html>

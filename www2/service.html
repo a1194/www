@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>服务管理</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/pages/service.js"></script>
+    <script src="js/myui.form.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+    <style>
+        #service-toolbar, #service-shortcut {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<table class="layui-hide" id="service-table" lay-filter="service-table"></table>
+
+<div id="service-toolbar">
+    <div class="layui-btn-container">
+        <!--
+        <button class="layui-btn layui-btn-sm" lay-event="goAdd">创建服务</button>
+        -->
+    </div>
+</div>
+
+<div id="service-shortcut">
+    <a class="layui-btn layui-btn-xs edit" lay-event="edit" >编辑</a>
+    <!--
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    -->
+</div>
+</body>
+</html>

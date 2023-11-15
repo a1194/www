@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+
+        async function xhrequest(url) {
+            let DownUrl = url;
+            let data = await fetch(DownUrl)
+                .then((response) => response.blob())
+                .then((res) => {
+                    //获取文件格式
+                    var index = DownUrl.lastIndexOf(".");
+                    //获取文件后缀判断文件格式
+                    var fileType = DownUrl.substr(index + 1);
+                    let blod = new Blob([res]);
+                    console.log(blod);
+
+                    var fr = new FileReader();
+                    let theFileContent
+                    fr.onload = function () {
+                        theFileContent = fr.result;
+                        console.log(theFileContent);
+                        //add your code here
+                    }
+                    fr.readAsText(blod, 'utf-8');
+                    
+                });
+            return data;
+        }
+
+        xhrequest("http://192.168.1.250/app/KnxTo485/KnxTo485.profile")
+    </script>
+</body>
+
+</html>

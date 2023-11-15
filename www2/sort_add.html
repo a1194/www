@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>创建品类</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <style type="text/css">
+        .service-item{
+            position: relative;
+            width: 400px;      
+            margin-bottom: 8px;
+            margin-right: 12px;
+            border-width: 1px;
+            border-color: #393D49;
+            border-style: solid; 
+
+        }
+        .service-item .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .service-item .item .right {
+            flex-grow: 1;
+        }
+
+        .service-item a {
+            position: absolute;
+            padding: 0px 4px;
+            border-width: 1px;
+            border-color: #393D49;
+            border-left-style: solid;
+            border-bottom-style: solid;
+            text-decoration: none;
+            text-align: center;
+            right: 0px;
+            top: 0px;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 0px solid #FFB800;
+            color: black;
+        }
+
+
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/sort.js"></script>
+    <script src="js/pages/sort_add.js"></script>
+    <script src="js/sortconfig.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+    <style>
+        /* .layui-form-label {
+            width: 180px !important;
+            text-align: center !important;
+        } */
+    </style>
+</head>
+<body>
+<div class="container">
+    <form id="form-sort-add" class="layui-form layui-form-pane" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="sort.name">品类名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="name" id="name" lay-verify="required" placeholder="请输入" autocomplete="off"
+                       class="layui-input" value="开关灯">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="sort.protocol_type">协议类型</label>
+            <div class="layui-input-inline">
+                <select lay-filter="protocol-select" id="protocol-select" name="protocol">
+                    <option value="0" selected="" data-i18n-text="common.none"></option>
+                    <option value="1">BLEMESH</option>
+                    <option value="2">KNX</option>
+                    <option value="3">ABUS</option>
+                    <option value="4">ZIGBEE</option>
+                    <option value="5">ETHERNET</option>
+                    <option value="6">WIFI</option>
+                    <option value="7">MODBUS</option>
+                    <option value="8">EIDE</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="sort.device_type">选择设备类型</label>
+            <div class="layui-input-inline">
+                <select lay-filter="dev-type-select" id="dev-type-select">
+                    <option value="0" selected="" data-i18n-text="device.unknown_device">未知设备</option>
+                    <option value="1" data-i18n-text="sort.gateway">网关</option>
+                    <option value="2" data-i18n-text="device.switch_light">开关灯</option>
+                    <option value="3" data-i18n-text="device.dim_light">调光灯</option>
+                    <option value="4" data-i18n-text="device.color_temperature_light">色温灯</option>
+                    <option value="5" data-i18n-text="device.curtain">窗帘</option>
+                    <option value="6" data-i18n-text="device.air">空调</option>
+                    <option value="7" data-i18n-text="device.new_wind">新风</option>
+                    <option value="8" data-i18n-text="device.floor_heating">地暖</option>
+                    <option value="9" data-i18n-text="device.switch_panel">开关面板</option>
+                    <option value="10" data-i18n-text="device.scene_panel">场景面板</option>
+                    <option value="11" data-i18n-text="device.music">音乐</option>
+                    <option value="12" data-i18n-text="device.environmental_detector">环境探测器</option>
+                    <option value="13" data-i18n-text="device.switch_module">开关模块</option>
+                    <option value="14" data-i18n-text="device.human_infrared_detector">人体探测器</option>
+                    <option value="15" data-i18n-text="deivce.window_magnetism">窗磁</option>
+                    <option value="16" data-i18n-text="device.hanes_master">恒适主机</option>
+                    <option value="17" data-i18n-text="device.hanes_slave">恒适分机</option>
+                    <option value="18" data-i18n-text="device.exhaust_fan">排风扇</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <button type="button" class="layui-btn layui-btn-primary" onclick="createService('switch', '', 3)"  data-i18n-text="sort.new.service">+ 新建服务
+            </button>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="service-container">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <button class="layui-btn" onclick="addSort()" type="button" data-i18n-text="common.confirm">确定</button>
+            <button class="layui-btn layui-btn-primary layui-border-green" onclick="closeWin()" type="button" data-i18n-text="common.cancel">取消</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

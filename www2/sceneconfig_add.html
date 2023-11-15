@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>创建设备场景</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+
+    <style type="text/css">
+        .dev-card {
+            width: 356px;
+            margin-bottom: 15px;
+            border-radius: 2px;
+            background-color: #fff;
+            border: 1px solid #d7d7d7;
+        }
+
+        .dev-card-head {
+            height: 42px;
+            line-height: 42px;
+            padding: 0 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: #333;
+            border-radius: 2px 2px 0 0;
+            font-size: 14px;
+        }
+
+        .dev-card-head button {
+            width: 306px;
+            float:left;
+        }
+
+        .dev-card-body {
+            width: 326px;
+            background-color: #FFFFFF;
+            overflow: auto;
+            /*padding: 10px 15px;*/
+            line-height: 24px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .dev-card-item {
+            text-align: left;
+            cursor: move;
+            position: relative;
+            vertical-align: top;
+            display: inline-block;
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+
+        .dev-card-body p {
+            text-align: center;
+        }
+
+        .dev-card-body button {
+            min-width: 90px;
+
+        }
+
+        .dev-card-body input {
+            width: 200px;
+        }
+
+        .dev-card-head a {
+            width: 20px;
+            /* float: right; */
+            /* width: 20px; */
+            margin-left: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .main-frame {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-left {
+            width: 370px;
+            height: 100%;
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        .main-right {
+            margin: 0 0 0 370px;
+            display: block;
+            padding: 10px 10px;
+        }
+
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/sort.js"></script>
+    <script src="js/model/room.js"></script>
+    <script src="js/model/device.js"></script>
+    <script src="js/model/action.js"></script>
+    <script src="js/model/sceneconfig.js"></script>
+    <script src="js/pages/sceneconfig_add.js"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+    <style>
+        .xx {
+            position: relative;
+            top: 3px;
+        }
+        #action-toolbar, #action-shortcut {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<form id="form-sceneconfig-add" class="layui-form layui-form-pane" action="">
+    <div class="main-frame">
+        <div class="main-left">
+            <div class="layui-form-item">
+                <label class="layui-form-label" data-i18n-text="center.device">设备</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="all_on" lay-skin="primary"   lay-filter="all_on" class="all_on">
+                    <input type="checkbox" name="all_off" lay-skin="primary"  lay-filter="all_off" class="all_off">
+                </div>
+            </div>
+            <div class="dev-container" style="width: 100%">
+
+            </div>
+        </div>
+        <div class="main-right">
+            <div class="layui-form-item">
+                <label class="layui-form-label" data-i18n-text="center.scene.name">场景名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" id="name" lay-verify="required" data-i18n-placeholder="common.input_tip" autocomplete="off"
+                           class="layui-input" value="">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" data-i18n-text="center.select_room">选择房屋</label>
+                <div class="layui-input-inline">
+                    <select lay-filter="room-select" id="room-select" name="room_id">
+                        <option value="0" selected="" data-i18n-text="common.none"></option>
+                    </select>
+                </div>
+            </div>
+
+            <!--
+            <div class="layui-form-item">
+                <label class="layui-form-label">场景ID</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="scene_id" id="scene_id" lay-verify="required" placeholder="请输入" autocomplete="off"
+                           class="layui-input" value="">
+                </div>
+            </div>
+            -->
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" data-i18n-text="center.protocol_type">协议类型</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="protocol" id="protocol" readonly  style="background-color: #fafafa;" class="layui-input">
+                </div>
+            </div>
+
+            <table class="layui-hide" id="action-table" lay-filter="action-table"></table>
+            <div id="action-toolbar" class="action">
+                <span class="action">行为</span>
+            </div>
+
+            <div id="action-shortcut">
+                <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="del">删除</a>
+            </div>
+
+            <div class="layui-form-item">
+                <button class="layui-btn" onclick="addSceneConfig()" type="button" data-i18n-text="common.confirm">确定</button>
+                <button class="layui-btn layui-btn-primary layui-border-green" onclick="back()" type="button" data-i18n-text="common.cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

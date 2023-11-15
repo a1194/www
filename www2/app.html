@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>应用管理</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <style type="text/css">
+
+
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/myui.form.js"></script>
+    <script src="js/pages/app.js"></script>
+    <script src="js/model/app.js"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+    <style>
+        .layui-tab-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            display: flex;
+            width: 230px;
+            height: 92px;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-right: 20px;
+        }
+
+        .left {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #16baaa;
+            min-width: 72px;
+            border-radius: 6px;
+            margin-right: 12px;
+
+        }
+
+        .left:hover .state {
+            opacity: 1;
+        }
+
+        .state {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, .5);
+            opacity: 0;
+            border-radius: 6px;
+            transition: all ease .3s;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .layui-icon-app {
+            font-size: 30px;
+            color: #fff;
+        }
+
+        .right .name {
+            font-size: 16px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .right .version {
+            color: #999;
+        }
+
+        .right .control {
+            position: relative;
+            left: -4px;
+            display: flex;
+            align-items: center;
+            color: #16baaa;
+        }
+
+        .control .btn1 {
+            margin-right: 20px;
+        }
+        .btn1, .btn2 {
+            cursor: pointer;
+        }
+        .constolItem {
+            position: relative;
+            right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button class="layui-btn layui-btn-sm" onclick="handleAdd()" data-i18n-text="common.add_new"></button>
+        <div class="layui-tab layui-tab-card" lay-filter="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this" lay-id="installed">已装应用</li>
+                <li lay-id="store">应用商店</li>
+            </ul>
+            <div class="layui-tab-content">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

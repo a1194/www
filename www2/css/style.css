@@ -1,0 +1,25 @@
+
+.container {
+    position: relative;
+    display: block;
+    padding: 15px;
+}
+
+textarea::placeholder {
+    font-size: 13px;
+    font-family: Arial;
+    letter-spacing: 1px;
+    color: #cbcbcb !important;
+    padding: 0 9px;
+}
+input::placeholder {
+    font-size: 13px;
+    font-family: Arial;
+    letter-spacing: 1px;
+    color: #cbcbcb !important;
+    padding: 0 9px;
+}
+.layui-table-page {
+    margin-bottom: 30px !important;
+}
+

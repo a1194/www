@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>按键配置管理</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/device.js"></script>
+    <script src="js/model/keyconfig.js"></script>
+    <script src="js/pages/keyconfig.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+    <style>
+        #keyconfig-shortcut {
+            display: none;
+        }
+        #keyconfig-toolbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<table class="layui-hide" id="keyconfig-table" lay-filter="keyconfig-table"></table>
+
+<div id="keyconfig-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="goAdd" data-i18n-text="center.key_config.create_key_config">创建按键配置</button>
+        <button class="layui-btn layui-btn-sm" lay-event="dels" data-i18n-text="device.bulk.delete">批量删除</button>
+    </div>
+</div>
+
+<!-- <div id="keyconfig-shortcut"> -->
+    <!-- <a class="layui-btn layui-btn-xs edit" lay-event="goEdit">编辑</a> -->
+    <!--
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    -->
+<!-- </div> -->
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>批量添加KNX设备</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <style type="text/css">
+        .gaddr-item {
+            position: relative;
+            float: left;
+            margin-bottom: 8px;
+            margin-right: 12px;
+            border-width: 1px;
+            border-color: #393D49;
+            border-style: solid;
+        }
+
+        .gaddr-item a {
+            float: left;
+            padding: 0px 4px;
+            border-width: 1px;
+            border-color: #393D49;
+            border-left-style: solid;
+            border-bottom-style: solid;
+            text-decoration: none;
+            text-align: center;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 0px solid #FFB800;
+            color: black;
+        }
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="js/xlsx.core.min.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/sort.js"></script>
+    <script src="js/model/device.js"></script>
+    <script src="js/model/knx.js"></script>
+    <script src="js/pages/knx_mult_add.js"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+    <style>
+        .upload{
+            position: relative;
+        }
+        #dbFile{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            opacity: 0;
+        }
+        #btn, #dbFile{
+            padding: 5px;
+        }
+        .ul {
+            display: flex;
+            align-items: center;
+            width: auto !important;
+            
+        }
+        .layui-form-item {
+            display: flex;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <form id="form-knx-add" class="layui-form layui-form-pane" action="" style="margin-bottom: 50px">
+        <div class="layui-form-item">
+            <label class="layui-form-label excel">导入Excel</label>
+            <label for="dbFile" class=" upload">
+                <input type="button" id="btn" data-i18n-value="common.choose_file" title=""><span id="tx"></span>
+                <input type="file" id="dbFile" title="">
+            </label>
+            <textarea id="area"></textarea>
+        </div>
+
+        <div class="layui-form-item">
+            <button class="layui-btn confirm" onclick="addKnxDevice()" type="button" >确定</button>
+            <button class="layui-btn cancel layui-btn-primary layui-border-green" onclick="closeWin()" type="button" >取消</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>组合场景</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/room.js"></script>
+    <script src="js/model/combinescene.js"></script>
+    <script src="js/pages/combinescene.js"></script>
+    <script src="js/myui.form.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+    <style>
+        #combinescene-toolbar, #combinescene-shortcut {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+<form id="form-room-add" class="layui-form layui-form-pane" action="" style="margin-bottom: 50px">
+    <div class="layui-form-item">
+        <label class="layui-form-label" data-i18n-text="center.combine_scene.entry">词条</label>
+        <div class="layui-input-inline">
+            <input type="text" name="word" id="word" lay-verify="required" autocomplete="off" data-i18n-placeholder="center.combine_scene.entry_enter"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <button class="layui-btn" onclick="speech()" type="button" data-i18n-text="center.combine_scene.exec">执行</button>
+        </div>
+    </div>
+</form>
+
+<table class="layui-hide" id="combinescene-table" lay-filter="combinescene-table"></table>
+
+<div id="combinescene-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm ctScene" lay-event="goAdd">创建组合场景</button>
+        <button class="layui-btn layui-btn-sm bulkDelete layui-btn-primary layui-border-green" lay-event="dels">批量删除</button>
+    </div>
+</div>
+
+<div id="combinescene-shortcut">
+    <a class="layui-btn layui-btn layui-btn-normal layui-btn-xs exec" lay-event="combineScene">执行</a>
+    <a class="layui-btn layui-btn-xs  edit" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="del">删除</a>
+</div>
+</body>
+</html>

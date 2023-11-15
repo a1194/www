@@ -1,0 +1,28 @@
+/* 重置layui-form-label标签的宽度 */
+.layui-form-label {
+    width: auto !important;
+    text-align: center !important;
+    min-width: 140px !important;
+}
+.layui-form-pane .layui-input-block {
+    margin-left: 140px !important;
+}
+
+/* 设置table超出body被遮盖的问题 */
+.layui-table-view {
+    margin-bottom: 20px !important;
+}
+
+/* 重置滑块颜色 */
+.ui-slider-handle { border-color: #16baaa !important; }
+.ui-slider-range { background: #16baaa !important; }
+.ui-state-active { background: #16baaa !important }
+
+/* 重置checkbox样式 */
+.layui-form-checked:hover>div {
+    background-color: #16baaa;
+}
+.layui-form-checked>div {
+    background-color: #16baaa;
+}
+

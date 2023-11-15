@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>消息监控</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+
+    <style type="text/css">
+
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/pages/msg_monitor.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+<body>
+
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label">监控</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF" lay-filter="monitorSwitch">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">消息</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" rows="20" cols="20" id="msg" class="layui-textarea" style="background: black;color: white;"></textarea>
+        </div>
+    </div>
+</form>
+
+
+</body>
+</html>

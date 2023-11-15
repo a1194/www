@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>设备场景配置</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/room.js"></script>
+    <script src="js/model/sceneconfig.js"></script>
+    <script src="js/pages/sceneconfig.js"></script>
+    <script src="js/myui.form.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+    <style>
+        #sceneconfig-toolbar, #sceneconfig-shortcut {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<table class="layui-hide" id="sceneconfig-table" lay-filter="sceneconfig-table"></table>
+
+<div id="sceneconfig-toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm addSceneDevice" lay-event="goSceneAdd">添加场景设备</button>
+        <button class="layui-btn layui-btn-sm addKnxSceneDevice" lay-event="goKnxSceneAdd">创建KNX场景设备</button>
+    </div>
+</div>
+
+<div id="sceneconfig-shortcut">
+    <a class="layui-btn  layui-btn-xs layui-btn-normal exec" lay-event="scene">执行</a>
+    <a class="layui-btn layui-btn-xs edit " lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="del">删除</a>
+</div>
+</body>
+</html>

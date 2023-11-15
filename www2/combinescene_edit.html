@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>修改组合场景</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+
+    <style type="text/css">
+        [contenteditable="true"]:focus {
+            outline: 0px solid #FFB800;
+            color: black;
+        }
+
+        .dev-card {
+            position: relative;
+            float: left;
+            width: 340px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #d7d7d7;
+            box-shadow: 0 0 2px #ccc;
+        }
+
+        .dev-card-head {
+            display: flex ;
+            align-items: center;
+            padding: 0 10px;
+            margin: 12px 0;
+            color: #333;
+            border-radius: 2px 2px 0 0;
+            font-size: 14px;
+        }
+
+        .dev-card-head button {
+            flex-grow: 1;
+            /* float:left; */
+        }
+
+        .dev-card-head a {
+            width: 20px;
+            /* float: right; */
+            /* width: 20px; */
+            margin-left: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .dev-card-body {
+            width: 310px;
+            overflow: auto;
+            /*padding: 10px 15px;*/
+            line-height: 24px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .dev-card-item {
+            text-align: left;
+            cursor: move;
+            position: relative;
+            vertical-align: top;
+            display: inline-block;
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+
+        .dev-card-body p {
+            text-align: center;
+        }
+
+        .dev-card-body button {
+            min-width: 90px;
+
+        }
+
+        .dev-card-body input {
+            width: 200px;
+        }
+
+        /* .dev-card-head a {
+            float: right;
+            margin-left: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 20px;
+        } */
+
+        .main-frame {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-left {
+            width: 370px;
+            height: 100%;
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        .main-right {
+            margin: 0 0 0 370px;
+            display: block;
+            padding: 10px 10px;
+        }
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/sort.js"></script>
+    <script src="js/model/room.js"></script>
+    <script src="js/model/device.js"></script>
+    <script src="js/model/action.js"></script>
+    <script src="js/model/trigger.js"></script>
+    <script src="js/model/combinescene.js"></script>
+    <script src="js/model/sceneconfig.js"></script>
+    <script src="js/pages/combinescene_edit.js"></script>
+    <script src="js/myui.form.js"></script>
+    <script src="js/xm-select.js"></script>
+    <script src="js/utils.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+    <style>
+        #trigger-toolbar, #trigger-shortcut, #action-toolbar, #action-shortcut {
+            display: none;
+        }
+        .open, .close {
+            position: relative;
+            top: 3px;
+        }
+        .addWork {
+            margin-left: 20px;
+        }
+        .select-condition .item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .select-item{
+            display: none;
+        }
+        .time {
+            width: 312px;
+            height: 30px;
+        }
+        .timeCon {
+            margin: 0 !important;
+        }
+        .select-week{
+            display: none;
+        }
+        /* 时间选择器 */
+        /* 隐藏秒 */
+        .laydate-time-list{padding-bottom:0 !important;overflow:hidden !important}
+        .laydate-time-list>li{width:50%!important;}
+        .laydate-time-list>li:last-child { display: none !important;}
+        /* 隐藏头部 */
+        #layui-laydate1 .layui-laydate-header {
+            display: none;
+        }
+        /* 月日选择器 */
+        #layui-laydate3 .laydate-prev-y, #layui-laydate3 .laydate-next-y{
+            display: none;
+        }
+        #layui-laydate3 .laydate-prev-m {
+            left: 5px;
+        }
+        #layui-laydate3 .laydate-next-m{
+            right: 5px;
+        }
+        #layui-laydate3 .laydate-set-ym span:nth-child(1) {
+            display: none;
+        }
+        /* 日选择器 */
+        #layui-laydate4 .layui-laydate-header {
+            display: none;
+        }
+        #layui-laydate4  .laydate-day-prev, #layui-laydate4 .laydate-day-next {
+            cursor: not-allowed;
+            pointer-events:none;
+        }
+        .layui-form-pane xm-select {
+            width: 300px ;
+        }
+        .submit {
+            margin-bottom: 20px;
+        }
+        .dev-container, .scene-container {
+            overflow: hidden !important;
+            margin-bottom: 20px !important;
+        }
+        .xm-label {
+            overflow: visible !important;
+        }
+
+        .tit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px 12px 0 12px;
+            color: #ccc;
+        }
+        hr {
+            margin: 2px 12px !important;
+        }
+
+        .filter-condition {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+<form id="form-combinescene-edit" class="layui-form layui-form-pane" action="">
+    <div class="main-frame">
+        <div class="main-left">
+            <div class="layui-form-item">
+                <div class="condition">
+                    <input type="radio" name="action_type" lay-filter="action_type" value="1" class="addCondition" data-i18n-title="center.combine_scene_add_con">
+                    <input type="radio" name="action_type" lay-filter="action_type" value="2" class="addWork" checked="" id="action_type_2" data-i18n-title="center.combine_scene_add_work">
+                </div>
+            </div>
+            <div class="layui-form-item" id="all_on_off">
+                <div class="condition">
+                    <input type="checkbox" name="all_on" lay-skin="primary"  lay-filter="all_on" class="all_on">
+                    <input type="checkbox" name="all_off" lay-skin="primary"  lay-filter="all_off" class="all_off">
+                    <input type="checkbox" name="show" lay-skin="tag"  lay-filter="isShow" checkbox="true" id="checkbox"> 
+                </div>
+            </div>
+            <div class="filter-condition">
+                <label class="layui-form-label" style="min-width: 80px !important">筛选</label>
+                <div id="xm-select-con" class="md-select-con" style="flex-grow: 1;"></div>
+            </div>
+            <div class="dev-container" style="width: 100%; margin-bottom: 30px;">
+            </div>
+            <div class="scene-container">
+            </div>
+        </div>
+        <div class="main-right">
+            <div class="layui-form-item">
+                <label class="layui-form-label" data-i18n-text="center.scene.name">场景名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" id="name" lay-verify="required" data-i18n-placeholder="common.input_tip" autocomplete="off"
+                           class="layui-input" value="">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" data-i18n-text="center.scene.id">场景ID</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="scene_id" id="scene_id" readonly  style="background-color: #fafafa;" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" data-i18n-text="center.select_room">选择房屋</label>
+                <div class="layui-input-inline">
+                    <select lay-filter="room-select" id="room-select" name="room_id" disabled>
+                        <option value="0" selected="" data-i18n-text="common.none"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="add-condition">
+                <h3 style="margin: 16px 0; border-bottom: 1px solid #efefef;padding-bottom: 8px;" data-i18n-text="center.combine_scene.add_condition.tips">添加触发条件</h3>
+                
+                <div class="layui-btn-container">
+                    <input type="button" class="layui-btn layui-btn-sm click"  onclick="addBasicTrigger(1, '')" data-i18n-value="center.combine_scene.click.tips"></input>
+                    <input type="button" class="layui-btn layui-btn-sm Voice"  onclick="addBasicTrigger(4, '')" data-i18n-value="center.combine_scene.voice.tips"></input>
+                    <div class="select-condition">
+                        <div class="time item">
+                            <label class="layui-form-label" data-i18n-text="common.time">时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" class="layui-input" id="ID-laydate-shortcut-time"  style="width: 212px;" >
+                            </div>
+                            
+                        </div>
+                        <div class="item">
+                            <label class="redo layui-form-label" data-i18n-text="common.repeat">重复</label>
+                            <select id="redoSelect" lay-filter="select-filter">
+                                <option value="time" selected data-i18n-text="center.combine_scene.orderDate">指定日期</option>
+                                <option value="everyday" data-i18n-text="center.combine_scene.everyday">每天</option>
+                                <option value="workingday" data-i18n-text="center.combine_scene.workingday">法定工作日</option>
+                                <option value="holiday" data-i18n-text="center.combine_scene.holiday">法定节假日</option>
+                                <option value="week" data-i18n-text="center.combine_scene.everyweek">每周</option>
+                                <option value="everymonth" data-i18n-text="center.combine_scene.everymonth">每月</option>
+                                <option value="everyyear" data-i18n-text="center.combine_scene.everyyear">每年</option>
+                            </select>
+                            <div class="select-week select-item">
+                                <div id="xm-select-demo" class="md-select-demo"></div>
+                            </div>
+                            <div class="select-date select-item" style="display: block;">
+                                <input type="text" class="layui-input" id="ID-laydate-select-date" placeholder="yyyy-MM-dd">
+                            </div>
+                            <div class="select-month-day select-item">
+                                <input type="text" class="layui-input" id="ID-laydate-month-day" placeholder="MM-dd">
+                            </div>
+                            <div class="select-day select-item">
+                                <input type="text" class="layui-input" id="ID-laydate-day" placeholder="dd">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="button" class="layui-btn layui-btn-sm Time item"  data-i18n-value="center.combine_scene.time.tips"></input>
+                </div>
+            </div>
+
+            <table class="layui-hide" id="trigger-table" lay-filter="trigger-table"></table>
+            <div id="trigger-toolbar">
+                <label class="redo layui-form-label">
+                    <span class="trigger">触发条件</span>
+                </label>
+                <div class="layui-input-inline" style="margin-bottom: 14px;">
+                    <select lay-filter="condition-select" id="condition-select" name="trigger_condition">
+                        <option value="1" selected="" data-i18n-text="center.combine_scene.any_con">满足以下任一条件</option>
+                        <option value="2" data-i18n-text="center.combine_scene.all_con" disabled>满足以下所有条件</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="trigger-shortcut">
+                <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="del">删除</a>
+            </div>
+
+            <table class="layui-hide" id="action-table" lay-filter="action-table"></table>
+            <div  id="action-toolbar">
+                <span class="action">行为</span>
+            </div>
+
+            <div id="action-shortcut">
+                <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="del">删除</a>
+            </div>
+
+            <div class="layui-form-item">
+                <button class="layui-btn" onclick="editCombineScene()" type="button" data-i18n-text="common.confirm">确定</button>
+                <button class="layui-btn layui-btn-primary layui-border-green" onclick="back()" type="button" data-i18n-text="common.cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

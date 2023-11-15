@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>修改EIDE配置</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <style type="text/css">
+         .gaddr-item {
+            position: relative;
+            width: 400px;      
+            margin-bottom: 8px;
+            margin-right: 12px;
+            border-width: 1px;
+            border-color: #393D49;
+            border-style: solid; 
+
+        }
+        .gaddr-item .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .gaddr-item .item .right {
+            flex-grow: 1;
+        }
+
+        .gaddr-item a {
+            position: absolute;
+            padding: 0px 4px;
+            border-width: 1px;
+            border-color: #393D49;
+            border-left-style: solid;
+            border-bottom-style: solid;
+            text-decoration: none;
+            text-align: center;
+            right: 0px;
+            top: 0px;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 0px solid #FFB800;
+            color: black;
+        }
+
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/device.js"></script>
+    <script src="js/model/sort.js"></script>
+    <script src="js/model/eide.js"></script>
+    <script src="js/pages/eide_edit.js"></script>
+    <script src="js/myui.form.js"></script>
+
+
+    <style>
+        
+    </style>
+</head>
+<body>
+<div class="container">
+    
+    <form id="form-eide-edit" class="layui-form layui-form-pane" action="" style="margin-bottom: 50px">
+        <div class="layui-form-item">
+            <label class="layui-form-label"   data-i18n-text="device.id"></label>
+            <div class="layui-input-inline">
+                <input type="text" name="dev_id" id="dev_id" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="device.name"></label>
+            <div class="layui-input-inline">
+                <input type="text" name="name" id="name" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="center.eide.sub_id"></label>
+            <div class="layui-input-inline">
+                <input type="text" name="sub_id" id="sub_id" lay-verify="required" data-i18n-placeholder="common.input_tip" autocomplete="off"
+                    class="layui-input" value="" readonly  style="background-color: #fafafa;">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="product.select_sort"></label>
+            <div class="layui-input-inline">
+                <select lay-filter="sort-select" id="sort-select"  readonly  style="background-color: #fafafa;">
+                    <option value="0" selected="" data-i18n-text="common.none"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="func-container">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <button class="layui-btn confirm" onclick="setEide()" type="button" data-i18n-text="common.confirm"></button>
+            <button class="layui-btn layui-btn-primary layui-border-green" onclick="closeWin()" type="button" data-i18n-text="common.cancel"></button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

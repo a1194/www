@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>设备信息</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <style type="text/css">
+
+    </style>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.form.js"></script>
+    <script src="js/jquery/jquery.tips.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/alink.msg.js"></script>
+    <script src="js/common.tools.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/model/device.js"></script>
+    <script src="js/model/room.js"></script>
+    <script src="js/pages/device_view.js"></script>
+    <script src="js/myui.form.js"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <form id="form-device-info" class="layui-form layui-form-pane" action="" style="margin-bottom: 50px">
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="device.name">设备名称</label>
+            <div class="layui-input-inline">
+                <input type="text" name="name" id="name" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">SN</label>
+            <div class="layui-input-inline">
+                <input type="text" name="sn" id="sn" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">IP</label>
+            <div class="layui-input-inline">
+                <input type="text" name="ip" id="ip" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">MAC</label>
+            <div class="layui-input-inline">
+                <input type="text" name="mac" id="mac" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="device.house">房屋</label>
+            <div class="layui-input-inline">
+                <input type="text" name="room" id="room" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="device.version_num">版本号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="version" id="version" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="device.sub_version_num">子版本号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="sub_version" id="sub_version" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-i18n-text="device.sub_mac">子MAC</label>
+            <div class="layui-input-inline">
+                <input type="text" name="sub_mac" id="sub_mac" readonly  style="background-color: #fafafa;" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <button class="layui-btn" onclick="closeWin()" type="button" data-i18n-text="device.back">返回</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
